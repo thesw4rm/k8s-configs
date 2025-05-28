@@ -1,0 +1,2 @@
+service-exp - experimenting with an individual service
+infrastructure-exp - experimenting with infra changes (ex. adding a BGP based node to kubernetes cluster)
