@@ -64,3 +64,21 @@ spec:
     topicOperator: {}
     userOperator: {}
 
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-bootstrap-service
+  labels:
+    shouldExpose: "yes"
+  annotations:
+    description: "Service to expose Kafka bootstrap server"
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: my-cluster-kafka-bootstrap
+  ports:
+    - protocol: TCP
+      port: 9092
+      targetPort: 9376
