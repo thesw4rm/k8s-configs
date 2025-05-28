@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: global
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthcheck-global-deployment
+  labels:
+    namespace: global
+spec:
+  selector:
+    matchLabels:
+      app: healthcheck-global
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: healthcheck-global
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
