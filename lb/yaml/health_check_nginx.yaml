@@ -24,3 +24,18 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthcheck-global-service
+  labels:
+    shouldExpose: "yes"
+spec:
+  selector:
+    app: healthcheck-global
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
