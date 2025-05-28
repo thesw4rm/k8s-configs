@@ -48,3 +48,10 @@ spec:
               number: 80
         path: /healthcheck
         pathType: Prefix
+      - backend:
+          service:
+            name: kafka-ui-service
+            port:
+              number: 8080 
+        path: /kafka/ui
+        pathType: Prefix
