@@ -1,0 +1,34 @@
+---
+# CiliumL2AnnouncementPolicy: Public L2 Announcements
+# This policy configures Layer 2 (ARP) announcements for LoadBalancer IPs
+# so they appear on the local network
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: public-l2-policy
+spec:
+  # Which LoadBalancer IP pools this policy applies to
+  loadBalancerIPs: true
+
+  # nodeSelector restricts which nodes can announce IPs
+  # Omitting this allows all nodes to participate in announcements
+  # Example: Only announce from specific nodes
+  # nodeSelector:
+  #   matchLabels:
+  #     kubernetes.io/hostname: kube-master.labs.thesw4rm.com
+
+  # interfaces restricts which network interfaces to use for announcements
+  # Omitting this uses all interfaces
+  # Example: Only use specific interface
+  # interfaces:
+  # - eth0
+
+  # externalIPs: true means announce external IPs too (optional)
+  externalIPs: false
+
+  # serviceSelector restricts which services get L2 announcements
+  # Omitting this applies to all LoadBalancer services
+  # Example: Only services with specific label
+  # serviceSelector:
+  #   matchLabels:
+  #     shouldExpose: "yes"
