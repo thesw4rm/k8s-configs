@@ -5,6 +5,12 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - 10.10.141.10/32
-  - 10.10.141.12/32
-  - 10.10.141.13/32
+  - 10.10.141.50/27
+
+---
+
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: public-l2-advertisement
+  namespace: metallb-system
