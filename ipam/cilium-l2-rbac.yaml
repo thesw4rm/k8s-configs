@@ -1,0 +1,35 @@
+---
+# RBAC permissions for Cilium L2 announcements
+# Cilium needs to create leases for L2 announcement leader election
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cilium-l2-announcements
+  namespace: kube-system
+rules:
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cilium-l2-announcements
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cilium-l2-announcements
+subjects:
+- kind: ServiceAccount
+  name: cilium
+  namespace: kube-system
