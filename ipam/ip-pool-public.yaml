@@ -1,0 +1,23 @@
+---
+# CiliumLoadBalancerIPPool: Public IP Pool
+# This pool provides LoadBalancer IPs for external services
+# CIDR: 10.10.141.50/27 (30 usable IPs from .50 to .81)
+apiVersion: cilium.io/v2alpha1
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: public
+spec:
+  # IP address blocks available for allocation
+  blocks:
+  - cidr: 10.10.141.50/27
+
+  # serviceSelector restricts which services can use this pool
+  # Omitting this allows all services to use the pool
+  # Example: Only services with label 'shouldExpose: yes'
+  # serviceSelector:
+  #   matchLabels:
+  #     shouldExpose: "yes"
+
+  # disabled: false means this pool is active
+  # Set to true to temporarily disable without deleting
+  disabled: false
