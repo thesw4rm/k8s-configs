@@ -9,14 +9,14 @@ metadata:
 spec:
   # IP address blocks available for allocation
   blocks:
-  - cidr: 10.10.141.50/27
+    - cidr: 10.10.141.50/27
 
   # serviceSelector restricts which services can use this pool
   # Omitting this allows all services to use the pool
   # Example: Only services with label 'shouldExpose: yes'
-  # serviceSelector:
-  #   matchLabels:
-  #     shouldExpose: "yes"
+  serviceSelector:
+    matchLabels:
+      shouldExpose: "true"
 
   # disabled: false means this pool is active
   # Set to true to temporarily disable without deleting

@@ -1,0 +1,17 @@
+global:
+  storageClass: local-path
+
+clickhouse:
+  installCustomStorageClass: true
+
+signoz:
+  service:
+    type: LoadBalancer
+    labels:
+      shouldExpose: "true"
+
+otelCollector:
+  service:
+    type: LoadBalancer
+    labels:
+      shouldExpose: "true"
