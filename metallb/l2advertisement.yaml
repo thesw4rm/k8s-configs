@@ -1,0 +1,14 @@
+---
+# MetalLB L2Advertisement
+# Configures L2 mode announcement for LoadBalancer IPs
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: public-l2
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - public-ipv4
+  - public-ipv6
+  interfaces:
+  - ens18
