@@ -1,0 +1,82 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: signoz-ipv6
+  namespace: platform
+  labels:
+    app.kubernetes.io/name: signoz
+    app.kubernetes.io/instance: signoz
+    app.kubernetes.io/component: signoz
+    shouldExpose: "true"
+spec:
+  type: LoadBalancer
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+    - IPv6
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: http
+    - name: http-internal
+      port: 8085
+      protocol: TCP
+      targetPort: http-internal
+    - name: opamp-internal
+      port: 4320
+      protocol: TCP
+      targetPort: opamp-internal
+  selector:
+    app.kubernetes.io/component: signoz
+    app.kubernetes.io/instance: signoz
+    app.kubernetes.io/name: signoz
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: signoz-otel-collector-ipv6
+  namespace: platform
+  labels:
+    app.kubernetes.io/name: signoz
+    app.kubernetes.io/instance: signoz
+    app.kubernetes.io/component: otel-collector
+    shouldExpose: "true"
+spec:
+  type: LoadBalancer
+  ipFamilyPolicy: SingleStack
+  ipFamilies:
+    - IPv6
+  ports:
+    - name: jaeger-grpc
+      port: 14250
+      protocol: TCP
+      targetPort: jaeger-grpc
+    - name: jaeger-thrift
+      port: 14268
+      protocol: TCP
+      targetPort: jaeger-thrift
+    - name: metrics
+      port: 8081
+      protocol: TCP
+      targetPort: metrics
+    - name: zpages
+      port: 8082
+      protocol: TCP
+      targetPort: zpages
+    - name: internal
+      port: 8888
+      protocol: TCP
+      targetPort: internal
+    - name: otlp-grpc
+      port: 4317
+      protocol: TCP
+      targetPort: otlp-grpc
+    - name: otlp-http
+      port: 4318
+      protocol: TCP
+      targetPort: otlp-http
+  selector:
+    app.kubernetes.io/component: otel-collector
+    app.kubernetes.io/instance: signoz
+    app.kubernetes.io/name: signoz

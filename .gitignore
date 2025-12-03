@@ -1,5 +1,6 @@
 # Kubernetes config files with sensitive data
 cluster/master.config
+secrets/
 *.config
 
 # Other sensitive files

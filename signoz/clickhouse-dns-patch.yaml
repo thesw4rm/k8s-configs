@@ -1,0 +1,27 @@
+---
+# Patch for ClickHouse DNS configuration on dual-stack clusters
+# Apply with: kubectl patch clickhouseinstallation signoz-clickhouse -n platform --type=json --patch-file=clickhouse-dns-patch.yaml
+apiVersion: clickhouse.altinity.com/v1
+kind: ClickHouseInstallation
+metadata:
+  name: signoz-clickhouse
+  namespace: platform
+spec:
+  templates:
+    podTemplates:
+      - name: pod-template
+        spec:
+          # Fix for Alpine DNS issues in dual-stack Kubernetes
+          # Alpine's musl libc DNS resolver fails with dual-stack DNS
+          dnsPolicy: None
+          dnsConfig:
+            nameservers:
+              - 10.96.0.10  # CoreDNS service IP (IPv4 only)
+            searches:
+              - platform.svc.cluster.local
+              - svc.cluster.local
+              - cluster.local
+            options:
+              - name: single-request-reopen
+              - name: ndots
+                value: "5"

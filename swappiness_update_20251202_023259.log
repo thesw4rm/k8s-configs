@@ -1,0 +1,40 @@
+======================================================================
+VM Swappiness Update Script
+Started: Tue Dec  2 02:32:59 AM EST 2025
+Log file: /home/diablo/k8s/lab/swappiness_update_20251202_023259.log
+======================================================================
+
+Checking vm.swappiness on all VMs with IPs starting with 10.10...
+======================================================================
+
+Checking fedora_template...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+
+Checking kube-master...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+
+Checking kube-worker...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+
+Checking kube-worker-big...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+
+Checking nix.dev...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness=10
+  ✅ Already set to 10
+
+Checking mysql...

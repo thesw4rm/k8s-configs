@@ -1,0 +1,15 @@
+---
+# MetalLB BGP Advertisement
+# Advertises both IPv4 and IPv6 pools via BGP
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: public-bgp
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - public-ipv4
+  - public-ipv6
+  aggregationLength: 32
+  aggregationLengthV6: 128
+  localPref: 100

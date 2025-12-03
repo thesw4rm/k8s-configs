@@ -1,0 +1,254 @@
+======================================================================
+VM Swappiness Update Script
+Started: Tue Dec  2 02:34:10 AM EST 2025
+Log file: /home/diablo/k8s/lab/swappiness_update_20251202_023410.log
+======================================================================
+
+Checking vm.swappiness on all VMs with IPs starting with 10.10...
+======================================================================
+
+Checking fedora_template...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking kube-master...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking kube-worker...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking kube-worker-big...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking nix.dev...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness=10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking mysql...
+  ❌ Not reachable - skipping
+
+Checking radarr...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking jellyfin...
+  ❌ Not reachable - skipping
+
+Checking r1.duri...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking r2.duri...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking h1.duri...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking h2.duri...
+  ❌ Not reachable - skipping
+
+Checking minecraft...
+  ❌ Not reachable - skipping
+
+Checking docs...
+  ❌ Not reachable - skipping
+
+Checking paperless...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking bitty...
+  ✓ Reachable Linux system
+  Current vm.swappiness: 10
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking budget...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking irc_root...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking docker-registry...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking mysql-sensit...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+Checking recipes...
+  ❌ Not reachable - skipping
+
+Checking home-media...
+  ✓ Reachable Linux system
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  Current vm.swappiness: 10
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+  In /etc/sysctl.conf: vm.swappiness = 10
+  ✅ Already set to 10
+  🧹 Clearing cached files in memory...
+  ✅ Cache cleared successfully
+
+
+======================================================================
+Summary Report
+======================================================================
+
+Updated VMs (0):
+
+Already Configured VMs (16):
+  - fedora_template
+  - kube-master
+  - kube-worker
+  - kube-worker-big
+  - nix.dev
+  - radarr
+  - r1.duri
+  - r2.duri
+  - h1.duri
+  - paperless
+  - bitty
+  - budget
+  - irc_root
+  - docker-registry
+  - mysql-sensit
+  - home-media
+
+Unreachable VMs (6):
+  - mysql
+  - jellyfin
+  - h2.duri
+  - minecraft
+  - docs
+  - recipes
+
+Non-Linux VMs (0):
+
+======================================================================
+Completed: Tue Dec  2 02:35:19 AM EST 2025
+Full log saved to: /home/diablo/k8s/lab/swappiness_update_20251202_023410.log
+======================================================================

@@ -292,7 +292,7 @@ data:
   # default DNS proxy to transparent mode in non-chaining modes
   dnsproxy-enable-transparent-mode: "true"
   dnsproxy-socket-linger-timeout: "10"
-  tofqdns-dns-reject-response-code: "refused"
+  tofqdns-dns-reject-response-code: "nameError"
   tofqdns-enable-dns-compression: "true"
   tofqdns-endpoint-max-ip-per-hostname: "1000"
   tofqdns-idle-connection-grace-period: "0s"

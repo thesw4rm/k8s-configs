@@ -1,0 +1,47 @@
+global:
+  storageClass: local-path
+
+clickhouse:
+  installCustomStorageClass: true
+  # Pod template customization for dual-stack cluster DNS fix
+  # This fixes Alpine/musl libc DNS issues in dual-stack Kubernetes
+  podTemplate:
+    spec:
+      dnsPolicy: None
+      dnsConfig:
+        nameservers:
+          - 10.96.0.10  # CoreDNS service (IPv4 only)
+        searches:
+          - platform.svc.cluster.local
+          - svc.cluster.local
+          - cluster.local
+        options:
+          - name: single-request-reopen
+          - name: ndots
+            value: "5"
+
+signoz:
+  service:
+    type: LoadBalancer
+    labels:
+      shouldExpose: "true"
+    # Dual-stack configuration for IPv4 + IPv6
+    # Note: PreferDualStack services automatically get IPv4 LoadBalancer IPs from MetalLB
+    # For IPv6 LoadBalancer IPs, use the separate signoz-ipv6-service.yaml
+    ipFamilyPolicy: PreferDualStack
+    ipFamilies:
+      - IPv4
+      - IPv6
+
+otelCollector:
+  service:
+    type: LoadBalancer
+    labels:
+      shouldExpose: "true"
+    # Dual-stack configuration for IPv4 + IPv6
+    # Note: PreferDualStack services automatically get IPv4 LoadBalancer IPs from MetalLB
+    # For IPv6 LoadBalancer IPs, use the separate signoz-ipv6-service.yaml
+    ipFamilyPolicy: PreferDualStack
+    ipFamilies:
+      - IPv4
+      - IPv6
