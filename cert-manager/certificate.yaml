@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dev-swarm-labs-tls-cert
+  namespace: default
+spec:
+  secretName: dev-swarm-labs-tls
+  issuerRef:
+    name: cloudflare-main-issuer
+    kind: Issuer
+  dnsNames:
+    - "*.dev.labs.thesw4rm.com"
