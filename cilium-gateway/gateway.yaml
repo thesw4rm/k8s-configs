@@ -4,11 +4,21 @@ kind: Gateway
 metadata:
   name: public-gateway
 spec:
-  gatewayClassName: cilium
+  gatewayClassName: cilium-ipv4
   listeners:
   - protocol: HTTP
     port: 80
     name: web-gw
+    allowedRoutes:
+      namespaces:
+        from: All
+  - protocol: HTTPS
+    port: 443
+    name: web-gw-https
+    tls:
+      certificateRefs:
+        - kind: Secret
+          name: dev-swarm-labs-tls
     allowedRoutes:
       namespaces:
         from: All
@@ -26,6 +36,16 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
+  - protocol: HTTPS
+    port: 443
+    name: web-gw-https
+    tls:
+      certificateRefs:
+        - kind: Secret
+          name: dev-swarm-labs-tls
+    allowedRoutes:
+      namespaces:
+        from: All
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -37,28 +57,58 @@ spec:
     namespace: default
   - name: public-gateway-ipv6
     namespace: default
+  hostnames:
+  - "signoz.dev.labs.thesw4rm.com"
   rules:
   - matches:
     - path:
         type: PathPrefix
-        value: /observe
+        value: /
     backendRefs:
     - name: signoz
       namespace: platform
       port: 8080
-  # - matches:
-  #   - headers:
-  #     - type: Exact
-  #       name: magic
-  #       value: foo
-  #     queryParams:
-  #     - type: Exact
-  #       name: great
-  #       value: example
-  #     path:
-  #       type: PathPrefix
-  #       value: /
-  #     method: GET
-  #   backendRefs:
-  #   - name: productpage
-  #     port: 9080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: infisical
+spec:
+  parentRefs:
+    - name: public-gateway
+      namespace: default
+    - name: public-gateway-ipv6
+      namespace: default
+  hostnames:
+    - "secrets.dev.labs.thesw4rm.com"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: infisical-infisical-standalone-infisical
+      namespace: default
+      port: 8080
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: longhorn
+spec:
+  parentRefs:
+    - name: public-gateway
+      namespace: default
+    - name: public-gateway-ipv6
+      namespace: default
+  hostnames:
+    - "storage.dev.labs.thesw4rm.com"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: longhorn-frontend
+      namespace: longhorn-system
+      port: 80

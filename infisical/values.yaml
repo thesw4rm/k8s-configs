@@ -1,0 +1,8 @@
+infisical:
+  image:
+    repository: infisical/infisical
+    tag: "latest" #<-- select tag from Dockerhub from the above link
+    pullPolicy: IfNotPresent
+ingress:
+  nginx:
+    enabled: false # We have gateway api
