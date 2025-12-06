@@ -1,0 +1,13 @@
+---
+# MetalLB IPAddressPool: Public IPv6 Pool
+# This pool provides LoadBalancer IPv6 addresses for external services
+# CIDR: fdde:5353:4242:210:0100::/96
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: public-ipv6
+  namespace: metallb-system
+spec:
+  addresses:
+    - fdde:5353:4242:210:0100::1-fdde:5353:4242:210:0100::ffff
+  autoAssign: true

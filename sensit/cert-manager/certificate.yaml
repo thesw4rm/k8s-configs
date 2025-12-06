@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sensit-swarm-labs-tls-cert
+  namespace: default
+spec:
+  secretName: sensit-swarm-labs-tls
+  issuerRef:
+    name: cloudflare-main-issuer
+    kind: Issuer
+  dnsNames:
+    - "*.sensit.labs.thesw4rm.com"

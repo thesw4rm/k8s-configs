@@ -1,0 +1,30 @@
+---
+# BGP Peer to OPNsense (IPv4)
+# iBGP peering using private ASN 64500
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: opnsense-ipv4
+  namespace: metallb-system
+spec:
+  myASN: 64500
+  peerASN: 64500
+  peerAddress: 10.10.141.126
+  peerPort: 179
+  holdTime: 90s
+  keepaliveTime: 30s
+  routerID: 10.10.141.126
+---
+# BGP Peer to OPNsense (IPv6)
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: opnsense-ipv6
+  namespace: metallb-system
+spec:
+  myASN: 64500
+  peerASN: 64500
+  peerAddress: fdde:5353:4242:141:1200::1
+  peerPort: 179
+  holdTime: 90s
+  keepaliveTime: 30s

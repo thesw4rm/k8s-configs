@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: docs-pvc
+  namespace: sensit-stuff # Change to your desired namespace
+  labels:
+    app: docs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 10Gi
+
+---
+# Optional: StorageClass parameters override
+# Uncomment and modify if you want custom settings for this PVC
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: docs-custom
+# provisioner: driver.longhorn.io
+# allowVolumeExpansion: true
+# reclaimPolicy: Retain  # or Delete
+# parameters:
+#   numberOfReplicas: "1"
+#   staleReplicaTimeout: "20"
+#   fromBackup: ""
+#   diskSelector: ""
+#   nodeSelector: ""
+#   dataLocality: "disabled"  # or "best-effort", "strict-local"
+
+# To create the PVC:
+# kubectl apply -f sensit/storage/volumes/docs-pvc.yaml
+
+# To check PVC status:
+# kubectl get pvc docs -n default
+
+# To resize the PVC (requires allowVolumeExpansion: true):
+# kubectl patch pvc docs -n default -p '{"spec":{"resources":{"requests":{"storage":"10Gi"}}}}'
+
+# To use in a pod:
+# volumes:
+#   - name: docs-storage
+#     persistentVolumeClaim:
+#       claimName: docs

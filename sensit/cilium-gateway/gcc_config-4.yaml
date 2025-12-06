@@ -1,0 +1,13 @@
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumGatewayClassConfig
+metadata:
+  name: cilium-ipv4-config
+  namespace: default
+spec:
+  description: "Gateway configuration for IPv4 LoadBalancer services"
+  service:
+    type: LoadBalancer
+    ipFamilyPolicy: SingleStack
+    ipFamilies:
+    - IPv4

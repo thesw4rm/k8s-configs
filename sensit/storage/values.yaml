@@ -1,0 +1,7 @@
+spec:
+  set:
+    defaultSettings.priorityClass: system-node-critical
+    defaultSettings.replicaAutoBalance: least-effort
+    defaultSettings.storageOverProvisioningPercentage: "200"
+    persistence.defaultClassReplicaCount: "2"
+

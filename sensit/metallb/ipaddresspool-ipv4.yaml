@@ -1,0 +1,13 @@
+---
+# MetalLB IPAddressPool: Public IPv4 Pool
+# This pool provides LoadBalancer IPv4 addresses for external services
+# CIDR: 10.10.141.50/27 (10.10.141.50 - 10.10.141.62)
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: public-ipv4
+  namespace: metallb-system
+spec:
+  addresses:
+  - 10.10.210.50/27
+  autoAssign: true

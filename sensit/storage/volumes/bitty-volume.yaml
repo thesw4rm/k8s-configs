@@ -1,0 +1,41 @@
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  name: bitty
+  namespace: longhorn-system
+  labels:
+    backup-target: default
+    longhornvolume: bitty
+    recurring-job-group.longhorn.io/default: enabled
+spec:
+  accessMode: rwo
+  dataEngine: v1
+  dataLocality: disabled
+  encrypted: false
+  frontend: blockdev
+  image: longhornio/longhorn-engine:v1.10.1
+  nodeID: sensit-worker-1.sensit.labs.thesw4rm.com
+  numberOfReplicas: 1
+  size: "5368709120"  # 5 GiB (Longhorn Volume requires bytes as string)
+  snapshotMaxCount: 250
+
+  # Backup settings
+  backupBlockSize: "2097152"  # 2 MiB
+  backupCompressionMethod: lz4
+  backupTargetName: default
+
+  # Optional settings (currently using defaults)
+  diskSelector: []
+  nodeSelector: []
+  staleReplicaTimeout: 20
+
+# To create this volume:
+# kubectl apply -f sensit/storage/volumes/bitty.yaml
+
+# To increase replicas (requires multiple nodes):
+# kubectl patch volume bitty -n longhorn-system --type='json' \
+#   -p='[{"op": "replace", "path": "/spec/numberOfReplicas", "value": 2}]'
+
+# To resize the volume:
+# kubectl patch volume bitty -n longhorn-system --type='json' \
+#   -p='[{"op": "replace", "path": "/spec/size", "value": "10737418240"}]'  # 10 GiB

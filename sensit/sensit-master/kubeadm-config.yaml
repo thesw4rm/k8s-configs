@@ -1,0 +1,15 @@
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: ClusterConfiguration
+kubernetesVersion: v1.34.2 # Replace with your desired Kubernetes version
+controlPlaneEndpoint: "fdde:5353:4242:210::20:6443" # Replace with your control plane endpoint
+clusterName: "sensit.labs.thesw4rm.com"
+networking:
+  podSubnet: "10.244.0.0/16,fd00:10:244::/64" # Private IPv4 and IPv6 Pod CIDRs
+  serviceSubnet: "10.96.0.0/12,fd00:10:96::/108" # Private IPv4 and IPv6 Service CIDRs
+---
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: InitConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+  - name: "node-ip"
+    value: "10.10.210.20,fdde:5353:4242:210::20" # Replace with your master node's private IPv4 and IPv6 addresses
